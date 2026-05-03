@@ -40,8 +40,13 @@ function cancel(){
   });
 }
 
+/* ✅ FIXED TOGGLE ONLY */
 function toggle(){
-  socket.emit("toggle");
+
+  const password = prompt("أدخل كلمة مرور الإدارة");
+
+  socket.emit("toggle", password);
+
 }
 
 function reset(){

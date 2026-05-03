@@ -1,0 +1,18 @@
+{
+  "main": [
+    {
+      "name": "مازن م",
+      "number": "123"
+    }
+  ],
+  "reserve": [],
+  "waiting": [],
+  "open": true,
+  "devices": {
+    "wBYGbfLjntxe-863AAAB": {
+      "active": true,
+      "name": "مازن م",
+      "number": "123"
+    }
+  }
+}
