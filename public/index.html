@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>فريق النخبة لكرة القدم</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+  <h1>فريق النخبة لكرة القدم</h1>
+  <p class="sub">القادم أجمل ⚽</p>
+</div>
+
+<hr class="goal">
+
+<div class="form">
+  <input id="name" placeholder="اسم اللاعب">
+  <input id="number" placeholder="رقم من 3 خانات">
+  <button onclick="register()">تسجيل</button>
+  <button onclick="cancel()">اعتذار</button>
+</div>
+
+<div id="msg"></div>
+
+<div class="grid">
+
+  <div class="box blue">
+    <h2>أساسي (<span id="m1">24</span>)</h2>
+    <ul id="main"></ul>
+  </div>
+
+  <div class="box green">
+    <h2>احتياطي (<span id="m2">3</span>)</h2>
+    <ul id="reserve"></ul>
+  </div>
+
+  <div class="box orange">
+    <h2>انتظار (<span id="m3">3</span>)</h2>
+    <ul id="waiting"></ul>
+  </div>
+
+</div>
+
+<div class="admin">
+  <button onclick="toggle()">فتح/إغلاق التسجيل</button>
+  <button onclick="showAdminModal()">مسح القائمة</button>
+</div>
+<div id="adminModal" style="
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+color:black;
+padding:20px;
+border-radius:10px;
+z-index:999;
+box-shadow:0 0 10px black;">
+
+  <p>
+    ادخل كلمة السر خاص فقط بالإدارة الرجاء عدم المحاولة
+  </p>
+
+  <input id="adminPassword">
+
+  <br><br>
+
+  <button onclick="confirmAdminReset()">تأكيد</button>
+
+  <button onclick="closeAdminModal()">إلغاء</button>
+
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

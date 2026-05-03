@@ -1,0 +1,63 @@
+body{
+  margin:0;
+  font-family:Arial;
+  direction:rtl;
+  text-align:center;
+  background: radial-gradient(circle, #0b3d2e, #06251d);
+  color:white;
+}
+
+.header{
+  padding:20px;
+  background:url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2") center;
+  background-size:cover;
+}
+
+.sub{
+  color:gold;
+  font-size:18px;
+}
+
+.goal{
+  border:3px dashed white;
+  margin:10px;
+}
+
+.form input{
+  padding:10px;
+  margin:5px;
+}
+
+button{
+  padding:10px 15px;
+  margin:5px;
+  background:gold;
+  border:none;
+  cursor:pointer;
+}
+
+.grid{
+  display:flex;
+  justify-content:space-around;
+  margin-top:20px;
+}
+
+.box{
+  width:30%;
+  padding:10px;
+  border-radius:12px;
+  background:rgba(255,255,255,0.08);
+}
+
+.blue{border-top:4px solid #2196f3;}
+.green{border-top:4px solid #4caf50;}
+.orange{border-top:4px solid #ff9800;}
+
+ul{
+  list-style:none;
+  padding:0;
+}
+
+.admin{
+  margin-top:20px;
+}
