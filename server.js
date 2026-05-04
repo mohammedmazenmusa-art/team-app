@@ -69,7 +69,7 @@ const deviceId = socket.id;
 
 if (!data.open) return socket.emit("msg", "التسجيل مغلق");
 
-// ✔ تعديل هنا فقط (منع فقط إذا كان مسجل حالياً)
+// منع الجهاز إذا كان مسجل حالياً
 if (data.devices[deviceId]?.active) {
 return socket.emit("msg", "هذا الجهاز سجل مسبقاً");
 }
@@ -83,7 +83,6 @@ if (data.main.length < 24) data.main.push(p);
 else if (data.reserve.length < 3) data.reserve.push(p);
 else if (data.waiting.length < 3) data.waiting.push(p);
 
-// ✔ تعديل هنا فقط
 data.devices[deviceId] = {
 active: true,
 name: p.name,
@@ -128,7 +127,6 @@ else if (k !== -1) {
 data.waiting.splice(k, 1);
 }
 
-// ✔ مهم جداً: فتح الجهاز مرة أخرى بعد الاعتذار
 delete data.devices[socket.id];
 
 saveData();
@@ -136,7 +134,7 @@ io.emit("update", data);
 
 });
 
-// فتح/إغلاق التسجيل (✔ تم تصحيحها فقط)
+// فتح/إغلاق التسجيل
 socket.on("toggle", (password) => {
 
 const ADMIN_PASSWORD = "57719@";
@@ -151,6 +149,30 @@ saveData();
 io.emit("update", data);
 
 });
+
+
+// 🔐 عرض تفصيلي آمن (إضافة جديدة فقط)
+socket.on("adminView", (password, callback) => {
+
+if (password !== ADMIN_PASSWORD) {
+return callback({ error: "كلمة المرور غير صحيحة" });
+}
+
+const all = [
+...data.main,
+...data.reserve,
+...data.waiting
+];
+
+callback({
+data: all.map(p => ({
+name: p.name,
+number: p.number
+}))
+});
+
+});
+
 
 // تنظيف كامل
 socket.on("reset", () => {

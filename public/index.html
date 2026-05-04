@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>فريق النخبة لكرة القدم</title>
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
@@ -12,6 +13,9 @@
   <h1>فريق النخبة لكرة القدم</h1>
   <p class="sub">القادم أجمل ⚽</p>
 </div>
+
+<!-- 🔔 تم إضافة شريط التنبيه تحت الشعار -->
+<div id="notifyBar"></div>
 
 <hr class="goal">
 
@@ -46,7 +50,15 @@
 <div class="admin">
   <button onclick="toggle()">فتح/إغلاق التسجيل</button>
   <button onclick="showAdminModal()">مسح القائمة</button>
+
+  <!-- 🔐 زر جديد (إضافة فقط) -->
+  <button onclick="showDetail()">عرض تفصيلي للقائمة</button>
+
+  
+
 </div>
+
+<!-- مسح القائمة -->
 <div id="adminModal" style="
 display:none;
 position:fixed;
@@ -69,11 +81,40 @@ box-shadow:0 0 10px black;">
   <br><br>
 
   <button onclick="confirmAdminReset()">تأكيد</button>
-
   <button onclick="closeAdminModal()">إلغاء</button>
 
 </div>
+
+<!-- 🔐 نافذة العرض التفصيلي (إضافة فقط) -->
+<div id="detailModal" style="
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+color:white;
+padding:20px;
+overflow:auto;
+z-index:1000;
+">
+
+  <h2>🔐 عرض تفصيلي للقائمة</h2>
+
+  <input type="password" id="detailPassword" placeholder="كلمة المرور">
+  <button onclick="openDetail()">دخول</button>
+  <button onclick="closeDetail()">إغلاق</button>
+
+  <div id="detailContent" style="margin-top:20px;"></div>
+
+</div>
+
 <script src="/socket.io/socket.io.js"></script>
+
+<!-- 📄 مكتبة PDF (إضافة فقط) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <script src="app.js"></script>
 
 </body>
