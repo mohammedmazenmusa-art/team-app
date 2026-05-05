@@ -5,16 +5,73 @@
 <title>فريق النخبة لكرة القدم</title>
 <link rel="stylesheet" href="style.css">
 
+<style>
+/* ===== صفحة الإغلاق ===== */
+#maintenance {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+  padding: 20px;
+}
+
+#maintenance h1 {
+  color: #ff3b3b;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+#maintenance p {
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+#countdown {
+  margin-top: 15px;
+  font-size: 32px;
+  color: gold;
+  letter-spacing: 2px;
+}
+</style>
+
 </head>
 
 <body>
+
+<!-- 🚫 صفحة الإغلاق (جديدة بالكامل) -->
+<div id="maintenance">
+  <h1>🚫 تم إغلاق السيرفر</h1>
+
+  <p>
+    نشكركم لحسن التجربة وآرائكم الجميلة<br>
+    نفيدكم بأنه تم إغلاق السيرفر بسبب بعض الملاحظات من الأعضاء
+  </p>
+
+  <p style="margin-top:20px;">
+    ⏳ المدة المتبقية للإغلاق:
+  </p>
+
+  <div id="countdown">14:00:00</div>
+</div>
+
+<!-- ===== الموقع الأساسي (كما هو بدون تعديل) ===== -->
 
 <div class="header">
   <h1>فريق النخبة لكرة القدم</h1>
   <p class="sub">القادم أجمل ⚽</p>
 </div>
 
-<!-- 🔔 تم إضافة شريط التنبيه تحت الشعار -->
 <div id="notifyBar"></div>
 
 <hr class="goal">
@@ -51,11 +108,7 @@
   <button onclick="toggle()">فتح/إغلاق التسجيل</button>
   <button onclick="showAdminModal()">مسح القائمة</button>
 
-  <!-- 🔐 زر جديد (إضافة فقط) -->
   <button onclick="showDetail()">عرض تفصيلي للقائمة</button>
-
-  
-
 </div>
 
 <!-- مسح القائمة -->
@@ -72,9 +125,7 @@ border-radius:10px;
 z-index:999;
 box-shadow:0 0 10px black;">
 
-  <p>
-    ادخل كلمة السر خاص فقط بالإدارة الرجاء عدم المحاولة
-  </p>
+  <p>ادخل كلمة السر خاص فقط بالإدارة الرجاء عدم المحاولة</p>
 
   <input id="adminPassword">
 
@@ -85,7 +136,7 @@ box-shadow:0 0 10px black;">
 
 </div>
 
-<!-- 🔐 نافذة العرض التفصيلي (إضافة فقط) -->
+<!-- نافذة التفاصيل -->
 <div id="detailModal" style="
 display:none;
 position:fixed;
@@ -97,8 +148,7 @@ background:rgba(0,0,0,0.85);
 color:white;
 padding:20px;
 overflow:auto;
-z-index:1000;
-">
+z-index:1000;">
 
   <h2>🔐 عرض تفصيلي للقائمة</h2>
 
@@ -111,11 +161,34 @@ z-index:1000;
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
-
-<!-- 📄 مكتبة PDF (إضافة فقط) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
 <script src="app.js"></script>
+
+<!-- ⏳ عداد تنازلي 14 ساعة -->
+<script>
+let totalSeconds = 14 * 60 * 60;
+
+const el = document.getElementById("countdown");
+
+setInterval(() => {
+
+let h = Math.floor(totalSeconds / 3600);
+let m = Math.floor((totalSeconds % 3600) / 60);
+let s = totalSeconds % 60;
+
+el.innerText =
+String(h).padStart(2,"0") + ":" +
+String(m).padStart(2,"0") + ":" +
+String(s).padStart(2,"0");
+
+totalSeconds--;
+
+if(totalSeconds < 0){
+document.getElementById("maintenance").style.display = "none";
+}
+
+}, 1000);
+</script>
 
 </body>
 </html>
