@@ -1,45 +1,32 @@
 {
   "main": [
     {
-      "name": "مازن ",
-      "number": "321"
-    },
-    {
-      "name": "222",
-      "number": "225"
-    },
-    {
       "name": "محمد",
       "number": "123"
     },
     {
-      "name": "محمد اح",
-      "number": "123"
+      "name": "عماد",
+      "number": "152"
+    },
+    {
+      "name": "كم",
+      "number": "369"
+    },
+    {
+      "name": "مازن ",
+      "number": "636"
+    },
+    {
+      "name": "جحخ",
+      "number": "852"
+    },
+    {
+      "name": "cvb",
+      "number": "321"
     }
   ],
   "reserve": [],
   "waiting": [],
   "open": true,
-  "devices": {
-    "VR_ajPw26wasz9gBAAAB": {
-      "active": true,
-      "name": "مازن ",
-      "number": "321"
-    },
-    "tc1yamGkFqZSmhTUAAAD": {
-      "active": true,
-      "name": "222",
-      "number": "225"
-    },
-    "jy-S9U9HadHC0jZfAAAB": {
-      "active": true,
-      "name": "محمد",
-      "number": "123"
-    },
-    "J8kbsprhd8igrDj_AAAD": {
-      "active": true,
-      "name": "محمد اح",
-      "number": "123"
-    }
-  }
+  "devices": {}
 }
